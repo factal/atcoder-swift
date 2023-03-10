@@ -2,9 +2,41 @@ import Foundation
 
 
 func solve(_ N:Int, _ M:Int, _ A:[Int], _ B:[Int]) {
-    var ans = 0
+    let n = 10
 
-    print(ans)
+    let w = 10000000
+        var arr = [[Int]](repeating: [Int](repeating: 0, count: w), count: n)
+
+
+    for i in (0..<n).reversed() {
+        if i == 0 {
+            break
+        }
+        for j in 0..<w {
+            arr[i-1][j] = arr[i][j]
+        }
+    }
+
+
+    // for i in 0..<n {
+    //     if i == 0 {
+    //         continue
+    //     }
+        
+    //     for j in 0..<w {
+    //         let temp = arr[j][i-1]
+    //         arr[j][i] = temp
+    //     }
+    // }
+
+    // var arr = [Int](repeating: 0, count: n)
+
+    // for i in 0..<n {
+    //     if i == n-1 {
+    //         break
+    //     }
+    //     arr[i+1] = arr[i]
+    // }
 }
 
 func main() {
