@@ -2,9 +2,30 @@ import Foundation
 
 
 func solve(_ H:Int, _ W:Int, _ A:[[Int]]) {
-    var ans = 0
+    var col_prefix_sum = [Int](repeating: 0, count: H)
+    var row_prefix_sum = [Int](repeating: 0, count: W)
 
-    print(ans)
+    for i in 0..<H {
+        for j in 0..<W {
+            col_prefix_sum[i] += A[i][j]
+            row_prefix_sum[j] += A[i][j]
+        }
+    }
+
+    var ans = [[Int]](repeating: [Int](repeating: 0, count: H), count: W)
+
+    for i in 0..<H {
+        for j in 0..<W {
+            ans[j][i] = col_prefix_sum[i] + row_prefix_sum[j] - A[i][j]
+        }
+    }
+
+    for i in 0..<H {
+        for j in 0..<W {
+            print(ans[j][i], terminator: " ")
+        }
+        print()
+    }
 }
 
 func main() {

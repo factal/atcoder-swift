@@ -1,20 +1,10 @@
 import Foundation
 
 
-func solve(_ N: Int, _ S: [String]) {
-    var registerd = Set<String>()
-    var accept_date = [Int]()
+func solve(_ s:String) {
+    var ans = 0
 
-    for i in 0..<N {
-        if registerd.contains(S[i]) == false {
-            registerd.insert(S[i])
-            accept_date.append(i + 1)
-        }
-    }
-
-    for i in 0..<accept_date.count {
-        print(accept_date[i])
-    }
+    print(ans)
 }
 
 func main() {
@@ -29,12 +19,8 @@ func main() {
     }
     func readInt() -> Int { Int(readString())! }
     func readDouble() -> Double { Double(readString())! }
-    let N = readInt()
-    var S = [String](repeating: "", count: N)
-    for i in 0..<N {
-        S[i] = readString()
-    }
-    _ = solve(N, S)
+    let s = readString()
+    _ = solve(s)
 }
 
 #if DEBUG

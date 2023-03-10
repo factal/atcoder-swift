@@ -2,9 +2,34 @@ import Foundation
 
 
 func solve(_ N:Int, _ L:Int, _ K:Int, _ A:[Int]) {
-    var ans = 0
+    func solve(_ m: Int) -> Bool {
+        var cnt = 0
+        var prev = 0
+        for i in 0..<N {
+            if A[i] - prev >= m && L - A[i] >= m {
+                cnt += 1
+                prev = A[i]
+            }
+        }
+        if cnt >= K {
+            return true
+        }
+        return false
+    }
 
-    print(ans)
+    var left = -1
+    var right = L + 1
+
+    while right - left > 1 {
+        let mid = (left + right) / 2
+        if solve(mid) {
+            left = mid
+        } else {
+            right = mid
+        }
+    }
+
+    print(left)
 }
 
 func main() {
