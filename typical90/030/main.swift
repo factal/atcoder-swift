@@ -2,7 +2,25 @@ import Foundation
 
 
 func solve(_ N:Int, _ K:Int) {
+    var factorNum = [Int](repeating: 0, count: N+1)
+
+    // enumerate prime numbers
+    for i in 2...N {
+        if factorNum[i] != 0 { continue }
+        var j = i
+        while j <= N {
+            factorNum[j] += 1
+            j += i
+        }
+    }
+
     var ans = 0
+
+    for i in 1...N {
+        if factorNum[i] >= K {
+            ans += 1
+        }
+    }
 
     print(ans)
 }
