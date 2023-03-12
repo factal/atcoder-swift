@@ -2,9 +2,33 @@ import Foundation
 
 
 func solve(_ N:Int, _ A:[Int], _ Q:Int, _ B:[Int]) {
-    var ans = 0
+    var aIntervals = [Int](repeating: 0, count: Q)
 
-    print(ans)
+    var A = A
+    A.sort()
+
+    for (i, b) in B.enumerated() {
+        var l = 0, r = N
+        while r - l > 1 {
+            let mid = (l + r) / 2
+            if A[mid] <= b {
+                l = mid
+            } else {
+                r = mid
+            }
+        }
+        aIntervals[i] = l + 1
+    }
+
+    for (b, a) in aIntervals.enumerated() {
+        if a == 0 {
+            print(abs(A[a] - B[b]))
+        } else if a == N {
+            print(abs(A[a-1] - B[b]))
+        } else {
+            print(min(abs(A[a-1] - B[b]), abs(A[a] - B[b])))
+        }
+    }
 }
 
 func main() {
